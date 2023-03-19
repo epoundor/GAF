@@ -9,6 +9,17 @@
 }
 
 .container {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   width: calc(1000%/12);
+}
+
+@keyframes pulse {
+  50% {
+    background-color: rgb(222, 222, 222);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

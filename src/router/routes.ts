@@ -16,7 +16,7 @@ export default [
     
   },
   {
-    path: '/articles/:id',
+    path: '/articles/:slug',
     name: 'article',
     component: ArticlePage,
     

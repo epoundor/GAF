@@ -1,47 +1,39 @@
 
-import VButton from './VButton.vue';
-
 <template>
-    <div class="flex flex-col py-12 justify-between container">
+    <div class="flex flex-col py-12 justify-between container" v-if="data.length">
         <div class="flex justify-between">
             <h3 class="text-2xl "><strong>ANCIENS NUMEROS</strong></h3>
             <div class="flex gap-4">
-                <span class="border rounded-full flex justify-center items-center w-10 aspect-square">
+                <button @click="emit('prev')" :disabled="(1 >= activePage || activePage > totalPages)"
+                    class="cursor-pointer border rounded-full flex justify-center items-center w-10 aspect-square"
+                    :class="{ 'opacity-30 cursor-not-allowed': (1 >= activePage || activePage > totalPages) }">
+
                     <mdicon name="arrow-left" />
-                </span>
-                <span class="border rounded-full flex justify-center items-center w-10 aspect-square">
+                </button>
+                <button @click="emit('next')" :disabled="activePage >= totalPages"
+                    class="border cursor-pointer rounded-full flex justify-center items-center w-10 aspect-square"
+                    :class="{ 'opacity-30 cursor-not-allowed': activePage >= totalPages }">
                     <mdicon name="arrow-right" />
-                </span>
+                </button>
             </div>
         </div>
 
-        <div class="w-full overflow-hidden mt-11">
-            <div class="flex gap-6 slides">
-                <template v-for="i in 4">
-                    <div class="bg-white flex flex-col gap-4 justify-center p-4 w-[265px] h-2/3">
-                        <img class="w-full h-full" src="/assets/spolight.png" alt="">
-                        <span class="font-semibold text-sm text-center">Nous pouvons traversé le pire en pensant que c’est
-                            la fin mais
-                            Jésus est là</span>
-                        <div class="flex justify-center">
-                            <VButton />
-                        </div>
-                    </div>
-                </template>
-            </div>
-
+        <div class="w-full flex gap-6  overflow-hidden mt-11" v-memo="[data]">
+            <template v-for="mag in data">
+                <VMag :mag="mag" />
+            </template>
         </div>
 
 
     </div>
 </template>
 <script setup lang="ts">
-import VButton from './VButton.vue';
+import VMag from './VMag.vue';
+import type { Post } from '../types'
+
+defineProps<{ data: Post[], totalPages: number, activePage: number }>()
+
+const emit = defineEmits(['next', 'prev'])
+
 
 </script>
-<style scoped>
-.slides {
-
-    width: calc(265px * 4)
-}
-</style>

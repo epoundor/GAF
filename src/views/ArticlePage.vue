@@ -3,9 +3,14 @@
 <template>
     <div class="pt-[60px] container flex gap-[60px] ">
         <div class="flex flex-col w-2/5">
-            <time class="font-bold text-functional-grey text-sm">18 Août 2022</time>
-            <h3 class="font-bold text-4xl mt-4">Nous pouvons traversé le pire en pensant que c’est la fin mais Jésus est là
+            <time class="font-bold text-functional-grey text-sm" v-if="post.date">{{ formatDate(new Date(post.date))
+            }}</time>
+            <h3 v-if="post.title" class="font-bold text-4xl mt-4">{{ post.title.rendered }}
             </h3>
+            <div class=" w-full flex flex-col gap-4" v-else>
+                <div class="w-full h-8 animate-pulse"></div>
+                <div class="w-1/2 h-8 animate-pulse"></div>
+            </div>
 
             <!-- Share -->
             <div class="mt-10 mb-9 flex flex-col gap-2">
@@ -55,66 +60,50 @@
             <VAuthor />
         </div>
         <div class="flex-1 ">
-            <img class="aspect-video h-full object-cover w-full" src="/assets/spolight.png" alt="">
+            <img class="aspect-video h-full object-cover w-full" :class="{ 'animate-pulse': !post_img_url }"
+                :src="post_img_url" onerror="this.src='/assets/placeholder-image.webp';" alt="">
         </div>
     </div>
     <div class="bg-white py-20">
         <div class="container">
-            <div class="container">
-                <p>Il existe de nombreux types de tests logiciels : tests unitaires, tests fonctionnels,
-                    tests A/B, tests d'intégration, tests de charge, etc. Et à notre avis, le dernier est à la fois le plus
-                    important et le plus difficile. Après tout, si des erreurs détectables à l'aide de tests A/B, de tests
-                    unitaires, fonctionnels et d'intégration apparaissent presque immédiatement après le "déploiement" d'une
-                    nouvelle version de l'application, alors les problèmes que les tests de charge visent à identifier sont
-                    " en
-                    train de dormir". Et ils ne sont découverts qu'à l'arrivée d'un véritable trafic utilisateur sur la
-                    nouvelle
-                    version de votre site ou de votre application, que ce soit la partie « logicielle » du projet (base de
-                    données, serveur d'application) ou la partie « matérielle » (manque de RAM dans le cluster, grosse
-                    charger
-                    sur le sous-système de disque pendant les opérations de lecture-écriture).</p>
-
-                <br>
-                <p> Dans cet article, nous expliquerons et montrerons comment nous effectuons, peut-être, des tests de
-                    charge de
-                    référence - en termes d'exhaustivité de la couverture et d'exhaustivité du rapport résultant. Nos
-                    développements sont assez reproductibles, vous pouvez donc les utiliser pour améliorer le travail de
-                    votre
-                    propre projet.</p>
-
-
-                <br>
-                <p>Je recommande de collecter la moitié du portefeuille d'un conservateur avec un revenu moyen provenant de
-                    titres que les parents de Yaroslava de l'exemple précédent achètent également: grandes entreprises
-                    russes,
-                    aristocrates de dividendes. Mais la seconde moitié devrait être réservée aux obligations d'emprunt
-                    fédérales
-                    (OFZ) et aux émetteurs privés du premier échelon, c'est-à-dire aux entreprises dont personne ne doute de
-                    la
-                    solvabilité sur le marché intérieur. Par exemple, Gazprom ou Sberbank.</p>
-                <br>
-                <p>
-                    Les obligations d'emprunt fédérales sont l'élément le plus fiable du marché boursier national. Mais la
-                    fiabilité se paie : plus l'instrument est fiable, moins il est rentable, et inversement. Le rendement du
-                    coupon est légèrement supérieur au taux des dépôts bancaires, qui est de 6 à 8 % depuis juin. Les
-                    coupons
-                    OFZ rapportent en moyenne 9 à 10 %, tandis que les obligations d'entreprise rapportent quelques pour
-                    cent de
-                    plus.</p>
-                <br>
-                <p>Designer indépendante Daria, vit à Bali, 30 ans
-                    À Bali, Dasha ne dépense que pour le loyer, la nourriture et un scooter, elle économise donc environ 25
-                    % de
-                    ses revenus. Elle a déjà économisé environ 1 million de roubles, elle souhaite l'investir et
-                    réapprovisionner son compte de courtage chaque mois avec des frais d'un ou deux emplois indépendants. Le
-                    rêve de Dasha est d'arrêter complètement de travailler dans 10 à 15 ans. Et pour cela, elle est
-                    désormais
-                    prête à prendre des risques.</p>
+            <div class="container" v-html="post.content.rendered">
             </div>
         </div>
     </div>
 </template>
 <script setup lang="ts">
+import { computed, onMounted, type Ref, ref } from 'vue';
+import { useRoute } from 'vue-router';
 import VAuthor from '../components/VAuthor.vue';
+import { Post } from '../types';
+import { getArticle, getFeaturedMedia } from '../api'
+import { formatDate } from '../utils/format-date';
+const route = useRoute()
 
+const id = computed(() => route.params.slug)
+const post: Ref<Post> = ref({
+    acf:
+    {
+        details: '',
+        pdf_url: ''
+    },
+    content:
+    {
+        rendered: ''
+    },
+    featured_media: 0,
+    title: {
+        rendered: ''
+    }
+})
+const post_img_url = ref('')
+
+onMounted(async () => {
+    post.value = (await getArticle(String(id.value)))[0]
+    document.title = `${post.value.title.rendered} - Gospel Afrique Francophone`
+
+    if (post.value && post.value.featured_media) {
+        post_img_url.value = await getFeaturedMedia(post.value.featured_media)
+    }
+})
 </script>
