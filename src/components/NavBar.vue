@@ -2,7 +2,7 @@
     <div class="bg-white">
         <div class="w-10/12  mx-auto py-6 flex justify-between items-center">
             <Logo />
-            <div class="flex items-center">
+            <div class="hidden items-center lg:flex">
                 <nav>
                     <ul class="flex text-base font-medium leading-5 gap-16 px-16">
                         <router-link :to="{ name: 'home' }">Accueil</router-link>
@@ -19,6 +19,9 @@
                         <a href="mailto:contact@gospelaf.com">contact@gospelaf.com</a>
                     </div>
                 </div>
+            </div>
+            <div class="lg:hidden">
+                <mdicon name="menu" />
             </div>
         </div>
     </div>

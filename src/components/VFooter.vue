@@ -3,7 +3,7 @@ import Logo from './Logo.vue';
 
 <template>
     <footer class="bg-[#32313F]">
-        <div class="py-6  w-10/12 mx-auto flex justify-between">
+        <div class="py-6 w-10/12 mx-auto flex flex-wrap gap-4 justify-between">
             <Logo />
             <div class="flex gap-3.5">
 

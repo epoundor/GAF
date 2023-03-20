@@ -1,17 +1,15 @@
 <template>
-    <div class="bg-white py-20 flex ">
-        <div class="container flex gap-32 justify-between">
+    <div class="bg-white py-20">
+        <div class="container flex flex-col lg:flex-row gap-6 lg:gap-32 justify-between">
             <h4 class="font-bold text-2xl">À PROPOS <br>
                 DE L’AUTEUR</h4>
-            <div class="flex items-center gap-9">
+            <div class="flex flex-col lg:flex-row justify-center items-center gap-9">
                 <img class="w-44 h-44 rounded-full" src="/assets/author.png" alt="">
-                <div class="">
+                <div class="flex flex-col items-center lg:items-start">
                     <span class="font-bold">Ulrich Nascimento</span>
                     <p class="text-sm">Président de l’association Impact-Gospel</p>
-                    <div class=" flex flex-col gap-2">
-                        <div class="font-bold text-lg">PARTAGER</div>
+                    <div class="mt-4 flex flex-col gap-2">
                         <div class="flex gap-3.5">
-
                             <a href=""
                                 class="rounded-full border border-[#A5ABB3] text-black w-10 h-10 flex items-center justify-center">
                                 <svg width="10" height="20" viewBox="0 0 10 20" fill="none"
@@ -60,7 +58,6 @@
             <div class=""></div>
 
         </div>
-
     </div>
 </template>
 <script setup lang="ts">

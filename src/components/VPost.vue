@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col aspect-[3/2] gap-x-28">
+    <div class="flex flex-col lg:only:aspect-[3/2] gap-x-28">
         <div class="h-2/3 mb-2">
             <router-link :to="{ name: 'article', params: { slug: post.slug } }">
                 <img :src="mag_img_url" onerror="this.src='/assets/placeholder-image.webp';"

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex gap-[60px]  container mb-[60px]">
+    <div class="flex flex-col lg:flex-row gap-[60px]  container mb-[60px]">
         <!-- <img class="w-[500px] aspect-[5/7]"
             src="https://www.croirepublications.com/i/article/1716/IAAA/un-gospel-francophone.jpg" alt=""> -->
         <img class="w-[500px] aspect-[5/7] object-cover" :class="{ 'animate-pulse': !mag_img_url }"

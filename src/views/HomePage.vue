@@ -7,10 +7,10 @@
             <div class="container">
                 <div class="flex mb-12 justify-between">
                     <h3 class="text-2xl "><strong>BLOG</strong></h3>
-                    <router-link :to="{ name: 'blog' }" class="px-4 py-2 border border-black">Voir tous les
+                    <router-link :to="{ name: 'blog' }" class="hidden lg:block px-4 py-2 border border-black">Voir tous les
                         articles</router-link>
                 </div>
-                <div class="grid gap-10 grid-cols-3">
+                <div class="grid gap-10 grid-rows-3 lg:grid-rows-none lg:grid-cols-3">
                     <VPost :post="post" v-for="(post) in blog" />
                 </div>
             </div>
