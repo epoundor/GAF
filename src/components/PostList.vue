@@ -1,7 +1,7 @@
 
 
 <template>
-    <div class="grid grid-cols-3 text-left gap-y-[60px] gap-x-10 py-10">
+    <div class="flex flex-col lg:grid lg:grid-cols-3 text-left gap-y-[60px] gap-x-10 py-10">
         <VPost :post="post" v-for="post in blog" />
     </div>
     <VPagination @click-page="(i) => page = i" @next="page++" @prev="page--" :count-page='totalPages' :active-page="page" />
