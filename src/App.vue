@@ -6,8 +6,8 @@ import VFooter from './components/VFooter.vue';
 
 <template>
   <NavBar />
-  <main class=" flex flex-col gap-20">
-    <Suspense>
+  <main class="flex-1 flex flex-col gap-20">
+    <Suspense class="flex-1">
       <RouterView />
     </Suspense>
   </main>

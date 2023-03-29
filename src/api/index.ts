@@ -5,8 +5,6 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use((req) => {
-  console.log(req.params);
-  
   return req
 })
 
