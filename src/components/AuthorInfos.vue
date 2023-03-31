@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white py-20">
-        <div class="container flex flex-col lg:flex-row gap-6 lg:gap-32 justify-between">
+        <!-- <div class="container flex flex-col lg:flex-row gap-6 lg:gap-32 justify-between">
             <h4 class="font-bold text-2xl">À PROPOS <br>
                 DE L’AUTEUR</h4>
             <div class="flex flex-col lg:flex-row justify-center items-center gap-9">
@@ -57,9 +57,13 @@
             </div>
             <div class=""></div>
 
-        </div>
+        </div> -->
+        <img class="container bg-functional-grey h-[184px] object-contain object-center" loading="lazy" :src="url"
+            alt="publicité" />
     </div>
 </template>
 <script setup lang="ts">
+import { getPubURL } from '../api';
 
+const url = await getPubURL()
 </script>

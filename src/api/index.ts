@@ -40,7 +40,7 @@ export const getMag = async (page=1) => {
 export const getBlog = async (per_page = 9, page = 1) => {
   const res = (await api.get('wp/v2/posts/', {
     params: {
-      categories: 2,
+      categories: 4,
       order: 'desc',
       orderby: 'date',
       per_page: per_page,
@@ -69,4 +69,16 @@ export const getArticle = async (slug: string | number) => {
 export const getFeaturedMedia = async (id: string | number) => {
     if(!id) return ''
     return (await api.get(`wp/v2/media/${id}`)).data.source_url;
+}
+
+export const getSocialLink = async () => {
+    return (await api.get('wp/v2/social-links')).data;
+}
+
+export const getJoinUsLink = async () => {
+    return (await api.get('wp/v2/social-links')).data.join_us_link;
+}
+
+export const getPubURL = async () => {
+    return (await api.get('wp/v2/pub')).data;
 }
