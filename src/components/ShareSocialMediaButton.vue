@@ -43,5 +43,5 @@
 import { computed } from 'vue';
 
 const props = defineProps<{ link?: string }>()
-const baseurl = computed(() => props.link ? props.link : window.location.origin + window.location.pathname);
+const baseurl = computed(() => window.location.origin + (props.link ? props.link : window.location.pathname));
 </script>

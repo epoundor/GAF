@@ -4,10 +4,6 @@ export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
 
-api.interceptors.request.use((req) => {
-  return req
-})
-
 export const getSpotLight = async () => {
   return (await api.get('wp/v2/posts/', {
     params: {
@@ -15,7 +11,7 @@ export const getSpotLight = async () => {
       order: 'desc',
       orderby: 'date',
       per_page: 1,
-      t:Date.now()
+      // t:Date.now()
     }})).data;
 }
 
@@ -26,7 +22,7 @@ export const getMag = async (page=1) => {
       categories: 3,
       order: 'desc', orderby: 'date', offset: 4 * (page - 1) + 1,
       per_page: 4,
-      t:Date.now()
+      // t:Date.now()
 
     }
     }));
@@ -45,7 +41,7 @@ export const getBlog = async (per_page = 9, page = 1) => {
       orderby: 'date',
       per_page: per_page,
       page: page,
-      t:Date.now()
+      // t:Date.now()
       
   }}));
   return {
@@ -60,7 +56,7 @@ export const getArticle = async (slug: string | number) => {
   return (await api.get('wp/v2/posts/', {
     params: {
       slug,
-      t:Date.now()
+      // t:Date.now()
     }
 
   })).data;
