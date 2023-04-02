@@ -5,8 +5,7 @@
         <div class="flex w-full flex-col lg:w-2/5">
             <time class="font-bold text-functional-grey text-sm" v-if="post.date">{{ formatDate(new Date(post.date))
             }}</time>
-            <h3 v-if="post.title" class="font-bold text-2xl lg:text-4xl mt-4">{{ post.title.rendered }}
-            </h3>
+            <h3 v-if="post.title" class="font-bold text-2xl lg:text-4xl mt-4" v-html="post.title.rendered"></h3>
             <div class=" w-full flex flex-col gap-4" v-else>
                 <div class="w-full h-8 animate-pulse"></div>
                 <div class="w-1/2 h-8 animate-pulse"></div>
@@ -21,7 +20,7 @@
             <VAuthor />
         </div>
         <div class="flex-1 ">
-            <img class="aspect-video h-full object-cover w-full" :class="{ 'animate-pulse': !post_img_url }"
+            <img class="aspect-video object-center h-full object-cover w-full" :class="{ 'animate-pulse': !post_img_url }"
                 :src="post_img_url" onerror="this.src='/assets/placeholder-image.webp';" alt="">
         </div>
     </div>

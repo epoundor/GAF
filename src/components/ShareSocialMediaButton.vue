@@ -1,7 +1,7 @@
 <template>
     <div class="flex gap-3.5">
 
-        <a :href="`http://www.facebook.com/share.php?u=${baseurl}`"
+        <a target="_blank" :href="`http://www.facebook.com/share.php?u=${baseurl}`"
             class="rounded-full border border-[#A5ABB3] text-black w-10 h-10 flex items-center justify-center">
             <svg width="10" height="20" viewBox="0 0 10 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -10,7 +10,7 @@
             </svg>
 
         </a>
-        <a :href="`https://www.linkedin.com/shareArticle?mini=true&url=${baseurl}`"
+        <a target="_blank" :href="`https://www.linkedin.com/shareArticle?mini=true&url=${baseurl}`"
             class="rounded-full border border-[#A5ABB3] text-black w-10 h-10 flex items-center justify-center">
             <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
