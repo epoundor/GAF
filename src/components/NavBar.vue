@@ -1,7 +1,9 @@
 <template>
     <div class="bg-white">
         <div class="w-10/12  mx-auto py-6 flex justify-between items-center">
-            <Logo />
+            <router-link :to="{ name: 'home' }" @click="toggleCollapsed">
+                <Logo />
+            </router-link>
             <div class="hidden items-center lg:flex">
                 <nav>
                     <ul class="flex text-base font-medium leading-5 gap-16 px-16">
