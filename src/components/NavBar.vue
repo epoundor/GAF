@@ -63,6 +63,6 @@ const toggleCollapsed = () => {
 </script>
 <style>
 .router-link-active {
-    color: #3375F6;
+    @apply text-primary;
 }
 </style>

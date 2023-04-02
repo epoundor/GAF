@@ -9,7 +9,7 @@
         </div>
         <time class="font-bold text-functional-grey text-sm uppercase" v-if="post.date">{{ formatDate(new Date(post.date))
         }}</time>
-        <span class="pr-4">{{ post.title.rendered }}</span>
+        <span class="pr-4" v-html="post.title.rendered"></span>
     </div>
 </template>
 <script setup lang="ts">

@@ -2,7 +2,7 @@
     <div class="bg-white flex flex-col gap-4 justify-center p-4 w-[282px] h-2/3">
         <img class="w-full h-[290px] bg-gray-500" onerror="this.src='/assets/placeholder-image.webp';" :src="mag_img_url"
             alt="">
-        <span class="font-semibold text-sm text-center">{{ mag.title.rendered }} </span>
+        <span class="font-semibold text-sm text-center" v-html="mag.title.rendered"></span>
         <div class="flex justify-center">
             <VButton :src="mag.acf.pdf_url" />
         </div>

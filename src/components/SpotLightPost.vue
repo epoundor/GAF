@@ -13,6 +13,7 @@
                 <div class="w-1/2 h-8 animate-pulse"></div>
             </div>
             <span class="mt-2 mb-6 text-functional-grey" v-if="mag && mag.acf.details">{{ mag.acf.details }}</span>
+            <!-- {{ mag.acf.pdf_url }} -->
             <VButton v-if="mag && mag.acf" :src="mag.acf.pdf_url" label="Télécharger"
                 class="py-1 gap-5 text-lg leading-[48px] mb-3" />
             <span>256 Téléchargements</span>
