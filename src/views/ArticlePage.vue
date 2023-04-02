@@ -56,7 +56,8 @@ const post: Ref<Post> = ref({
     featured_media: 0,
     title: {
         rendered: ''
-    }
+    },
+    tags: []
 })
 const post_img_url = ref('')
 

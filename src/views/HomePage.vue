@@ -65,7 +65,8 @@ const spotLightPost: Ref<Post> = ref(
         featured_media: 0,
         title: {
             rendered: ''
-        }
+        },
+        tags: []
     })
 const totalPages = ref(0)
 const page = ref(1)
