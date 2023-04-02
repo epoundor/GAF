@@ -40,6 +40,8 @@
     </div>
 </template>
 <script setup lang="ts">
-const baseurl = window.location.origin + window.location.pathname;
+import { computed } from 'vue';
 
+const props = defineProps<{ link?: string }>()
+const baseurl = computed(() => props.link ? props.link : window.location.origin + window.location.pathname);
 </script>
