@@ -71,6 +71,21 @@ export const getFeaturedMedia = async (id: string | number) => {
     return (await api.get(`wp/v2/media/${id}`)).data.source_url;
 }
 
+export const getTag = async (id: string | number) => {
+    if(!id) return ''
+    return (await api.get(`wp/v2/tags/${id}`)).data.name;
+}
+
+export const getTags = async (arr: number[])=>{
+  if (!arr) return []
+  const newArr: string[] = []
+  
+  for (let index = 0; index < arr.length; index++) {
+    newArr.push(String(await getTag(arr[index])))
+  }
+    return newArr
+}
+
 export const getSocialLink = async () => {
     return (await api.get('wp/v2/social-links')).data;
 }

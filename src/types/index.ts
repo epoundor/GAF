@@ -1,5 +1,5 @@
 export interface Post {
-    slug?: number | string,
+    slug?: string,
     date?:Date,
     title: {
         rendered: string
@@ -11,5 +11,6 @@ export interface Post {
     acf: {
         pdf_url: string,
         details: string
-    }
+    },
+    tags:number[]
 }

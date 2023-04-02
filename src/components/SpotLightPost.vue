@@ -5,7 +5,10 @@
         <img class="w-[500px] aspect-[5/7] object-cover" :class="{ 'animate-pulse': !mag_img_url }"
             onerror="this.src='/assets/placeholder-image.webp';" :src="mag_img_url" alt="">
         <div class="flex flex-col items-start flex-1">
-            <VTag label="Nouveau" />
+
+            <template v-for="tag in tags">
+                <VTag :label="tag" />
+            </template>
             <h2 class="font-bold mt-4 text-3xl" v-if="mag && mag.title">{{ mag.title.rendered }}
             </h2>
             <div class=" w-full flex flex-col gap-4" v-else>
@@ -36,19 +39,26 @@
 <script setup lang="ts">
 import VTag from './VTag.vue';
 import VButton from './VButton.vue';
-import { onUpdated, ref } from 'vue';
-import { getFeaturedMedia } from '../api'
+import { Ref, onMounted, onUpdated, ref } from 'vue';
+import { getFeaturedMedia, getTags } from '../api'
 import type { Post } from '../types'
 import ShareSocialMediaButton from './ShareSocialMediaButton.vue';
 
 const props = defineProps<{ mag: Post }>()
 
 const mag_img_url = ref('')
+const tags: Ref<string[] | ''> = ref([])
 
 onUpdated(async () => {
     if (props.mag && props.mag.featured_media) {
         mag_img_url.value = await getFeaturedMedia(props.mag.featured_media)
     }
+})
+
+onMounted(() => {
+    setTimeout(async () => {
+        tags.value = await getTags(props.mag.tags)
+    }, 1000);
 })
 </script>
 <style scoped>
