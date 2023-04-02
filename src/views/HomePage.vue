@@ -1,7 +1,7 @@
 <template>
     <div class="pt-[60px] ">
         <SpotLightPost :mag="spotLightPost" />
-        <AuthorInfos />
+        <!-- <AuthorInfos /> -->
         <OldPosts :total-pages="+totalPages" :active-page="page" :data="oldPosts" @next="page++" @prev="page--" />
         <div class="bg-white py-20">
             <div class="container">
