@@ -14,7 +14,7 @@
                     <VPost :post="post" v-for="(post) in interviews" />
                 </div>
             </div>
-            <div class="container">
+            <div class="container mt-20">
                 <div class="flex mb-12 justify-between">
                     <h3 class="text-2xl "><strong>ACTUALITÉS</strong></h3>
                     <router-link :to="{ name: 'actu' }" class="hidden lg:block px-4 py-2 border border-black">Voir tous les
