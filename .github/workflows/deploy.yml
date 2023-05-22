@@ -22,6 +22,9 @@ jobs:
 
     - name: Build
       run: npm run build
+    
+    - name: Copy Apache config
+      run: cp .htaccess /dist/
 
     - name: Deploy
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
