@@ -6,12 +6,22 @@
         <div class="bg-white py-20">
             <div class="container">
                 <div class="flex mb-12 justify-between">
-                    <h3 class="text-2xl "><strong>BLOG</strong></h3>
-                    <router-link :to="{ name: 'blog' }" class="hidden lg:block px-4 py-2 border border-black">Voir tous les
+                    <h3 class="text-2xl "><strong>INTERVIEWS</strong></h3>
+                    <router-link :to="{ name: 'interview' }" class="hidden lg:block px-4 py-2 border border-black">Voir tous les
                         articles</router-link>
                 </div>
                 <div class="grid gap-10 grid-rows-3 lg:grid-rows-none lg:grid-cols-3">
-                    <VPost :post="post" v-for="(post) in blog" />
+                    <VPost :post="post" v-for="(post) in interviews" />
+                </div>
+            </div>
+            <div class="container">
+                <div class="flex mb-12 justify-between">
+                    <h3 class="text-2xl "><strong>ACTUALITÉS</strong></h3>
+                    <router-link :to="{ name: 'actu' }" class="hidden lg:block px-4 py-2 border border-black">Voir tous les
+                        articles</router-link>
+                </div>
+                <div class="grid gap-10 grid-rows-3 lg:grid-rows-none lg:grid-cols-3">
+                    <VPost :post="post" v-for="(post) in actualities" />
                 </div>
             </div>
             <div class="container mt-16 rounded-lg de bg-top lg:bg-right h-[426px] lg:h-52 overflow-hidden">
@@ -42,14 +52,15 @@ import AuthorInfos from '../components/AuthorInfos.vue';
 import OldPosts from '../components/OldPosts.vue';
 import SpotLightPost from '../components/SpotLightPost.vue';
 import VPost from '../components/VPost.vue';
-import { getBlog, getJoinUsLink, getMag, getSpotLight } from '../api'
+import { getActuality, getInterview, getJoinUsLink, getMag, getSpotLight } from '../api'
 import { ref, onMounted, warn, watch } from 'vue';
 import type { Ref } from 'vue';
 import { Post } from '../types';
 
 
 const oldPosts = ref([])
-const blog = ref([])
+const actualities = ref([])
+const interviews = ref([])
 const join_us_link = ref("")
 const spotLightPost: Ref<Post> = ref(
     {
@@ -76,7 +87,8 @@ onMounted(async () => {
     oldPosts.value = res.data
     totalPages.value = res.totalPages
     spotLightPost.value = (await getSpotLight())[0]
-    blog.value = (await getBlog(3)).data
+    actualities.value = (await getActuality(3)).data
+    interviews.value = (await getInterview(3)).data
     join_us_link.value = await getJoinUsLink()
 })
 

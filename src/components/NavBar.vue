@@ -8,7 +8,8 @@
                 <nav>
                     <ul class="flex text-base font-medium leading-5 gap-16 px-16">
                         <router-link :to="{ name: 'home' }">Accueil</router-link>
-                        <router-link :to="{ name: 'blog' }">Blog</router-link>
+                        <router-link :to="{ name: 'interview' }">Interviews</router-link>
+                        <router-link :to="{ name: 'actu' }">Actualités</router-link>
                     </ul>
                 </nav>
                 <div class="flex flex-col  border-l-2 pl-6 gap-2">
@@ -33,7 +34,8 @@
                         <nav>
                             <ul class="flex flex-col text-2xl leading-tight gap-6">
                                 <router-link :to="{ name: 'home' }" @click="toggleCollapsed">Accueil</router-link>
-                                <router-link :to="{ name: 'blog' }" @click="toggleCollapsed">Blog</router-link>
+                                <router-link :to="{ name: 'interview' }" @click="toggleCollapsed">Interviews</router-link>
+                                <router-link :to="{ name: 'actu' }" @click="toggleCollapsed">Actualités</router-link>
                                 <div class="flex flex-col gap-2">
                                     <div class="flex gap-2">
                                         <mdicon name="phone" />

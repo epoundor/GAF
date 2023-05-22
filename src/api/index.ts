@@ -33,10 +33,28 @@ export const getMag = async (page=1) => {
   }
 }
 
-export const getBlog = async (per_page = 9, page = 1) => {
+export const getActuality = async (per_page = 9, page = 1) => {
   const res = (await api.get('wp/v2/posts/', {
     params: {
-      categories: 4,
+      categories: 8,
+      order: 'desc',
+      orderby: 'date',
+      per_page: per_page,
+      page: page,
+      // t:Date.now()
+      
+  }}));
+  return {
+    data: res.data,
+    totalPages: res.headers['x-wp-totalpages'],
+    total: res.headers['x-wp-total']
+  }
+}
+
+export const getInterview = async (per_page = 9, page = 1) => {
+  const res = (await api.get('wp/v2/posts/', {
+    params: {
+      categories: 7,
       order: 'desc',
       orderby: 'date',
       per_page: per_page,
