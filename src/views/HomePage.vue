@@ -6,16 +6,6 @@
         <div class="bg-white py-20">
             <div class="container">
                 <div class="flex mb-12 justify-between">
-                    <h3 class="text-2xl "><strong>INTERVIEWS</strong></h3>
-                    <router-link :to="{ name: 'interview' }" class="hidden lg:block px-4 py-2 border border-black">Voir tous les
-                        articles</router-link>
-                </div>
-                <div class="grid gap-10 grid-rows-3 lg:grid-rows-none lg:grid-cols-3">
-                    <VPost :post="post" v-for="(post) in interviews" />
-                </div>
-            </div>
-            <div class="container mt-20">
-                <div class="flex mb-12 justify-between">
                     <h3 class="text-2xl "><strong>ACTUALITÉS</strong></h3>
                     <router-link :to="{ name: 'actu' }" class="hidden lg:block px-4 py-2 border border-black">Voir tous les
                         articles</router-link>
@@ -24,6 +14,17 @@
                     <VPost :post="post" v-for="(post) in actualities" />
                 </div>
             </div>
+            <div class="container  mt-20">
+                <div class="flex mb-12 justify-between">
+                    <h3 class="text-2xl "><strong>INTERVIEWS</strong></h3>
+                    <router-link :to="{ name: 'interview' }" class="hidden lg:block px-4 py-2 border border-black">Voir tous les
+                        articles</router-link>
+                </div>
+                <div class="grid gap-10 grid-rows-3 lg:grid-rows-none lg:grid-cols-3">
+                    <VPost :post="post" v-for="(post) in interviews" />
+                </div>
+            </div>
+            
             <div class="container mt-16 rounded-lg de bg-top lg:bg-right h-[426px] lg:h-52 overflow-hidden">
                 <div class="gradient h-full lg:pt-10 p-4 lg:pl-16">
                     <div class="flex lg:block justify-end lg:justify-start h-full flex-col">
