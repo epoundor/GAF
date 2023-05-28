@@ -8,8 +8,8 @@
                 <nav>
                     <ul class="flex text-base font-medium leading-5 gap-16 px-16">
                         <router-link :to="{ name: 'home' }">Accueil</router-link>
-                        <router-link :to="{ name: 'interview' }">Interviews</router-link>
                         <router-link :to="{ name: 'actu' }">Actualités</router-link>
+                        <router-link :to="{ name: 'interview' }">Interviews</router-link>
                     </ul>
                 </nav>
                 <div class="flex flex-col  border-l-2 pl-6 gap-2">
