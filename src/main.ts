@@ -11,6 +11,6 @@ const app = createApp(App)
 app.use(mdiVue, { icons: mdijs });
     
     app.component('Icon',)
-    app.use(router).mount('#app')
+app.use(router).mount('#app')
     
 console.log("Ce site a été crée par epoundor (https://github.com/epoundor");
