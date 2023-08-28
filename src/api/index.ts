@@ -4,8 +4,14 @@ export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
 api.interceptors.request.use((req) => {
-  req.params['t']=new Date();
-  return req
+  const newReq = {
+    ...req,
+    params: {
+      t: new Date()
+    }
+  }
+  ;
+  return newReq
 })
 
 export const getSpotLight = async () => {
