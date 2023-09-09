@@ -19,7 +19,7 @@
                     </div>
                     <div class="flex gap-2">
                         <mdicon name="email-outline" />
-                        <a href="mailto:contact@gospelaf.com">contact@gospelaf.com</a>
+                        <a href="mailto:impactgospel1@gmail.com">impactgospel1@gmail.com</a>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="flex gap-2">
                                         <mdicon name="email-outline" />
-                                        <a href="mailto:contact@gospelaf.com">contact@gospelaf.com</a>
+                                        <a href="mailto:impactgospel1@gmail.com">impactgospel1@gmail.com</a>
                                     </div>
                                 </div>
                             </ul>

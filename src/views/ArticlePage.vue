@@ -17,7 +17,7 @@
                 <ShareSocialMediaButton />
             </div>
 
-            <VAuthor />
+            <!-- <VAuthor /> -->
         </div>
         <div class="flex-1 ">
             <img class="aspect-video object-center h-full object-cover w-full" :class="{ 'animate-pulse': !post_img_url }"
